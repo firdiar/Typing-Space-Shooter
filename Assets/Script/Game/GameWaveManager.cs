@@ -36,14 +36,13 @@ public class GameWaveManager : MonoBehaviour {
 	}
 
 	public void StartNextWave(){
-		Debug.Log (Waves);
 		Waves++;
 		InitEnemy ();
+		GameObjManager.instance.ShowWaves (Waves.ToString ());
 		Debug.Log (Waves);
 	}
 
 	public void InitEnemy(){
-		Debug.Log (enemyCount.Count);
 
 		enemyCount.Add(new EnemyWavesData(EnemyType.small , Waves *2 - 2*Waves /3 - Waves /6 ));
 		enemyCount.Add( new EnemyWavesData(EnemyType.medium , Waves /3));
@@ -88,18 +87,19 @@ public class GameWaveManager : MonoBehaviour {
 			case EnemyType.small:
 
 				temp = Instantiate (smallEnemy, SpawnPos [Random.Range (0, SpawnPos.Length)].transform.position, Quaternion.identity);
-
-				//GOM.listEnemy.Add ();
+				temp.GetComponent<MainEnemy> ().score = 80;
 				Debug.Log ("Summon Small");
 				break;
 			case EnemyType.medium:
 
 				temp = Instantiate (mediumEnemy, SpawnPos [Random.Range (0, SpawnPos.Length)].transform.position, Quaternion.identity);
+				temp.GetComponent<MainEnemy> ().score = 250;
 				Debug.Log ("Summon Medium");
 				break;
 			case EnemyType.big:
 
 				temp = Instantiate (bigEnemy, SpawnPos [Random.Range (0, SpawnPos.Length)].transform.position, Quaternion.identity);
+				temp.GetComponent<MainEnemy> ().score = 500;
 				Debug.Log ("Summon Big");
 				break;
 

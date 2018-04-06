@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour {
 
 	public void SettingTarget(Transform Target , bool isDestroying){
 		Debug.Log (GetComponent<MoveToTarget> ());
-		GetComponent<MoveToTarget> ().SetTransform (3, Target, false);
+		GetComponent<MoveToTarget> ().SetTransform (5, Target, false);
 		setDestroying (isDestroying);
 	}
 

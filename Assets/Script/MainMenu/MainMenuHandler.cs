@@ -10,6 +10,7 @@ public class MainMenuHandler : MonoBehaviour {
 	public GameObject homeScreen;
 	public GameObject pausedMenu;
 	public GameObject OptionMenu;
+	public GameObject ResultMenu;
 	Animator animator;
 
 	void Start(){
@@ -23,6 +24,10 @@ public class MainMenuHandler : MonoBehaviour {
 
 	public void OpenOption(bool active){
 		OptionMenu.SetActive (active);
+	}
+
+	public void OpenResultMenu(bool active){
+		ResultMenu.SetActive (active);
 	}
 
 

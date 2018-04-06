@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MainEnemy : MonoBehaviour {
 
+
+	public int score = 0;
 	TextMesh renderText;
 	Transform textBackgorund;
 	Rigidbody2D rb;
@@ -14,7 +16,7 @@ public class MainEnemy : MonoBehaviour {
 		transform.GetChild (0).GetComponent<Renderer> ().sortingOrder = 2;
 		renderText = transform.GetChild (0).GetComponent<TextMesh> ();
 		textBackgorund = transform.GetChild (0).GetChild (0);
-		GetComponent<MoveToTarget> ().SetRigidbody(0.5f , 80 , GameObjManager.instance.player.transform , false) ;
+		GetComponent<MoveToTarget> ().SetRigidbody(0.5f , 120 , GameObjManager.instance.player.transform , false) ;
 
 	}
 
@@ -62,15 +64,20 @@ public class MainEnemy : MonoBehaviour {
 		if (col.gameObject.tag == "Bullet") {
 			Bullet b = col.GetComponent<Bullet> ();
 			if (b.getTarget () == gameObject) {
-				if(b.getDestroying ()){
+				if (b.getDestroying ()) {
 					Destroy (gameObject);
 				}
-				Destroy(col.gameObject);
+				Destroy (col.gameObject);
 			}
 
 			Debug.Log ("Triggered");
 		
+		} else if (col.gameObject.tag == "Bomb") {
+			Destroy (gameObject);
+
 		}
+
+
 
 
 	}
